@@ -8,10 +8,10 @@ def index(request):
         import cv2
         import os
         import numpy
-        
+
         file1 = request.FILES['filename']
         image = cv2.imdecode(numpy.fromstring(file1.read(), numpy.uint8), cv2.IMREAD_UNCHANGED)
-        pytesseract.pytesseract.tesseract_cmd = r"C:\\Tesseract\\tesseract.exe"
+        pytesseract.pytesseract.tesseract_cmd = r"/app/.apt/usr/bin/tesseract"
 
         text = pytesseract.image_to_string(Image.open(file1))
         context = {}
