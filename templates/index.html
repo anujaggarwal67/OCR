@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   
+  <title>OCR</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    /* Create two equal columns that floats next to each other */
+    .column {
+      float: left;
+      width: 50%;
+      padding: 10px;
+      height: 700px; /* Should be removed. Only for demonstration */
+    }
+    
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style> 
+</head>
+
+<body>
+  
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <h1>SCAN PAN CARD USING OCR</h1>
+      </a>
+      
+    </div>
+  </nav>
+  <div class="row">
+    <div class="column" style="background-color:#aaa;">
+      <h2>Please upload/take photo of your PAN Card</h2>
+      <form  method="POST" enctype="multipart/form-data">
+        <input type="file" id="myFile" name="filename" >
+        <br>
+        {% csrf_token %}
+        <br><input type="submit">
+      </form>
+    </div>
+    <div class="column" style="background-color:#bbb;">
+      {% if context %}
+        <table>
+          <tr>
+            <td>
+              <h2>Name :</h2>
+            </td>
+            <td>
+              <h2>{{ context.Name }}</h2>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h2>Father's Name :</h2>
+            </td>
+            <td>
+              <h2>{{ context.FatherName }}</h2>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h2>PAN No. :</h2>
+            </td>
+            <td>
+              <h2>{{ context.PAN }}</h2>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h2>Date of Birth :</h2>
+            </td>
+            <td>
+              <h2>{{ context.DOB }}</h2>
+            </td>
+          </tr>
+          
+        </table>
+      {% endif %}
+    </div>
+  </div>
+  
+
+  
+</body>
+
+</html>
