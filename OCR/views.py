@@ -19,6 +19,7 @@ def index(request):
         text = text.split("\n")
         for i in range(len(text)):
             text[i] = text[i].strip()
+        print("hello")
         for ele in text:
             if ele=="":
                 text.remove(ele)
